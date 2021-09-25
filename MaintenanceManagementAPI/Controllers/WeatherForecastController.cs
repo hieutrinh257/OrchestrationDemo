@@ -4,9 +4,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using WorkshopManagementAPI.Models;
+using MaintenanceManagementAPI.Models;
 
-namespace WorkshopManagementAPI.Controllers
+namespace MaintenanceManagementAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
@@ -23,7 +23,7 @@ namespace WorkshopManagementAPI.Controllers
         [HttpGet]
         public string Get()
         {
-            return "WorkshopManagementAPI";
+            return "MaintenanceManagementAPI";
         }
     }
 }

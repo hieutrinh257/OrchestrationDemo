@@ -1,4 +1,4 @@
-﻿namespace WorkshopManagementAPI.Controllers
+﻿namespace MaintenanceManagementAPI.Controllers
 {
     public class ApiEndPoint
     {

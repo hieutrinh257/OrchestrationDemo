@@ -15,23 +15,23 @@ using WebApp.ViewModels;
 
 namespace WebApp.Controllers
 {
-    public class WorkshopManagementController : Controller
+    public class MaintenanceManagementController : Controller
     {
-        private readonly ILogger<WorkshopManagementController> _logger;
+        private readonly ILogger<MaintenanceManagementController> _logger;
         private readonly ICustomerManagementAPI _customerAPI;
-        private readonly IWorkshopManagementAPI _workshopAPI;
+        private readonly IMaintenanceManagementAPI _maintenanceAPI;
         private readonly ISagaOrchestratorBackgroundService _sagaOrchestrator;
 
         
-        public WorkshopManagementController(
-            ILogger<WorkshopManagementController> logger, 
+        public MaintenanceManagementController(
+            ILogger<MaintenanceManagementController> logger, 
             ICustomerManagementAPI customerAPI, 
-            IWorkshopManagementAPI workshopAPI, 
+            IMaintenanceManagementAPI maintenanceAPI, 
             ISagaOrchestratorBackgroundService sagaOrchestrator)
         {
             _logger = logger;
             _customerAPI = customerAPI;
-            _workshopAPI = workshopAPI;
+            _maintenanceAPI = maintenanceAPI;
             _sagaOrchestrator = sagaOrchestrator;
         }
 
@@ -43,7 +43,7 @@ namespace WebApp.Controllers
         [HttpGet]
         public IActionResult New()
         {
-            var model = new WorkShopManagementNewVM
+            var model = new MaintenanceManagementNewVM
             {
                 Customer = new CustomerRegisterVM()
             };
@@ -53,7 +53,7 @@ namespace WebApp.Controllers
         /// <summary>
         /// </summary>
         [HttpPost]
-        public async Task<IActionResult> RegisterAndPlanMaintenanceJob([FromForm] WorkShopManagementNewVM inputModel)
+        public async Task<IActionResult> RegisterAndPlanMaintenanceJob([FromForm] MaintenanceManagementNewVM inputModel)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace WebApp.Controllers
             and that's the business decision you have to take. 
             Otherwise you have to send another email to disregard(compensate) the previous email*/
             await _customerAPI.SendWelcomeEmail(emailAddress);
-            await _workshopAPI.SendMaintenanceJobScheduleDetailEmail(emailAddress);
+            await _maintenanceAPI.SendMaintenanceJobScheduleDetailEmail(emailAddress);
         }
     }
 }

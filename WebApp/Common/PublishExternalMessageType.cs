@@ -19,6 +19,6 @@
         public const string HotelServices = "Hotel.#";
         public const string CustomerServices = "Customer.#";
         public const string VehicleServices = "Vehicle.#";
-        public const string WorkshopManagementServices = "Workshop.#";
+        public const string MaintenanceManagementServices = "Maintenance.#";
     }
 }

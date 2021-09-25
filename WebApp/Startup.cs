@@ -39,7 +39,7 @@ namespace WebApp
             services.AddTransient<ISagaOrchestratorBackgroundService, SagaOrchestratorBackgroundService>();
             
             services.AddTransient<ICustomerManagementAPI, CustomerManagementAPI>();
-            services.AddTransient<IWorkshopManagementAPI, WorkshopManagementAPI>();
+            services.AddTransient<IMaintenanceManagementAPI, MaintenanceManagementAPI>();
 
             services.AddHostedService<SagaOrchestratorBackgroundService>();
 

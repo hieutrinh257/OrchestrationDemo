@@ -4,9 +4,9 @@ using System.Text;
 using Newtonsoft.Json;
 using RabbitMQ.Client;
 
-using WorkshopManagementAPI.Common;
+using MaintenanceManagementAPI.Common;
 
-namespace WorkshopManagementAPI.Infrastructure.Messaging
+namespace MaintenanceManagementAPI.Infrastructure.Messaging
 {
     public class MessagePublisher : IMessagePublisher
     {

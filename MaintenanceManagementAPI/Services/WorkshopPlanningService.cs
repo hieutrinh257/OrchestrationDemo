@@ -7,18 +7,18 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using WorkshopManagementAPI.Models;
+using MaintenanceManagementAPI.Models;
 
-namespace WorkshopManagementAPI.Services
+namespace MaintenanceManagementAPI.Services
 {
-    public class WorkshopPlanningService : IWorkshopPlanningService
+    public class MaintenancePlanningService : IMaintenancePlanningService
     {
-        private readonly ILogger<WorkshopPlanningService> _logger;
+        private readonly ILogger<MaintenancePlanningService> _logger;
         private readonly IConfiguration _configuration;
         private readonly IHostingEnvironment _env;
 
-        public WorkshopPlanningService(
-            ILogger<WorkshopPlanningService> logger, 
+        public MaintenancePlanningService(
+            ILogger<MaintenancePlanningService> logger, 
             IConfiguration iConfig, 
             IHostingEnvironment env)
         {

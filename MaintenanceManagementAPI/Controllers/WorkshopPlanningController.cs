@@ -8,20 +8,20 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using WorkshopManagementAPI.Models;
+using MaintenanceManagementAPI.Models;
 
-namespace WorkshopManagementAPI.Controllers
+namespace MaintenanceManagementAPI.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class WorkshopPlanningController : ControllerBase
+    public class MaintenancePlanningController : ControllerBase
     {
 
-        private readonly ILogger<WorkshopPlanningController> _logger;
+        private readonly ILogger<MaintenancePlanningController> _logger;
         private readonly IConfiguration _configuration;
         private readonly IHostingEnvironment _env;
 
-        public WorkshopPlanningController(ILogger<WorkshopPlanningController> logger,
+        public MaintenancePlanningController(ILogger<MaintenancePlanningController> logger,
             IConfiguration iConfig, IHostingEnvironment env)
         {
             _logger = logger;

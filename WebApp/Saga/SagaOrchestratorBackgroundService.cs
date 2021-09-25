@@ -48,7 +48,7 @@ namespace WebApp.Saga
         }
 
 
-        public async Task StartProcessing(WorkShopManagementNewVM inputModel)
+        public async Task StartProcessing(MaintenanceManagementNewVM inputModel)
         {
             Guid jobId = Guid.NewGuid();
 
@@ -104,7 +104,7 @@ namespace WebApp.Saga
             maintenanceJob.PlanningDate = DateTime.Now;
             _messagePublisher.PublishToTopicExchange(
                 registerWorkingModel.CorrelationID,
-                TopicRouteKey.WorkshopManagementServices,
+                TopicRouteKey.MaintenanceManagementServices,
                 PublishExternalMessageType.PlanMaintenanceJob,
                 maintenanceJob);
         }
@@ -269,7 +269,7 @@ namespace WebApp.Saga
                     sagaModel.PlanMaintenanceJobSucceed = false;
                     _messagePublisher.PublishToTopicExchange(
                         sagaModel.CorrelationID,
-                        TopicRouteKey.WorkshopManagementServices,
+                        TopicRouteKey.MaintenanceManagementServices,
                         PublishExternalMessageType.UndoPlanMaintenanceJob, 
                         sagaModel.JobId);
                     _messagePublisher.PublishToTopicExchange(

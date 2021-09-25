@@ -5,7 +5,7 @@ namespace WebApp.Saga
 {
     public interface ISagaOrchestratorBackgroundService
     {
-        Task StartProcessing(WorkShopManagementNewVM inputModel);
+        Task StartProcessing(MaintenanceManagementNewVM inputModel);
         Task<RegisterAndPlanJobSagaModel> GetDetailOnSagaComplete(string emailAddress);
     }
 }

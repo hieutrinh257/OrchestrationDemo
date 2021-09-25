@@ -1,6 +1,6 @@
 ﻿using RabbitMQ.Client;
 
-namespace WorkshopManagementAPI.Infrastructure.Messaging
+namespace MaintenanceManagementAPI.Infrastructure.Messaging
 {
     public interface IMessagePublisher
     {

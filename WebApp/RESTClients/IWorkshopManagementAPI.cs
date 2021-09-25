@@ -3,7 +3,7 @@ using System.Threading.Tasks;
 
 namespace WebApp.RESTClients
 {
-    public interface IWorkshopManagementAPI
+    public interface IMaintenanceManagementAPI
     {
         Task<HttpResponseMessage> SendMaintenanceJobScheduleDetailEmail(string emailAddress);
     }

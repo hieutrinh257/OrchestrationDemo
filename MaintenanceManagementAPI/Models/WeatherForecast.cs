@@ -1,6 +1,6 @@
 using System;
 
-namespace WorkshopManagementAPI.Models
+namespace MaintenanceManagementAPI.Models
 {
     public class WeatherForecast
     {

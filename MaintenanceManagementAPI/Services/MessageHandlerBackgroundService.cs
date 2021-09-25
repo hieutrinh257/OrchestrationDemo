@@ -8,13 +8,13 @@ using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using RabbitMQ.Client.Exceptions;
 using Serilog;
-using WorkshopManagementAPI.Common;
-using WorkshopManagementAPI.Infrastructure.Messaging;
-using WorkshopManagementAPI.Models;
+using MaintenanceManagementAPI.Common;
+using MaintenanceManagementAPI.Infrastructure.Messaging;
+using MaintenanceManagementAPI.Models;
 using JsonException = System.Text.Json.JsonException;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace WorkshopManagementAPI.Services
+namespace MaintenanceManagementAPI.Services
 {
     /// <summary>
     /// Running Background service by using BackgroundService class
@@ -22,16 +22,16 @@ namespace WorkshopManagementAPI.Services
     public class MessageHandlerBackgroundService : Microsoft.Extensions.Hosting.BackgroundService
     {
         private readonly ILogger<MessageHandlerBackgroundService> _logger;
-        private readonly IWorkshopPlanningService _workshopPlanningService;
+        private readonly IMaintenancePlanningService _maintenancePlanningService;
         private readonly IMessagePublisher _messagePublisher;
 
         public MessageHandlerBackgroundService(
             ILogger<MessageHandlerBackgroundService> logger, 
-            IWorkshopPlanningService workshopPlanningService, 
+            IMaintenancePlanningService maintenancePlanningService, 
             IMessagePublisher messagePublisher)
         {
             _logger = logger;
-            _workshopPlanningService = workshopPlanningService;
+            _maintenancePlanningService = maintenancePlanningService;
             _messagePublisher = messagePublisher;
         }
 
@@ -43,13 +43,13 @@ namespace WorkshopManagementAPI.Services
             IModel channel = connection.CreateModel();
 
             channel.ExchangeDeclare("SAGA-GMS-topic-exchange", ExchangeType.Topic);
-            channel.QueueDeclare(queue: "SAGA-GMS-WorkshopManagementAPI-topic-queue",
+            channel.QueueDeclare(queue: "SAGA-GMS-MaintenanceManagementAPI-topic-queue",
                 durable: true,
                 exclusive: false,
                 autoDelete: false,
                 arguments: null);
             
-            channel.QueueBind(exchange: "SAGA-GMS-topic-exchange", queue: "SAGA-GMS-WorkshopManagementAPI-topic-queue", routingKey: TopicRouteKey.WorkshopManagementServices);
+            channel.QueueBind(exchange: "SAGA-GMS-topic-exchange", queue: "SAGA-GMS-MaintenanceManagementAPI-topic-queue", routingKey: TopicRouteKey.MaintenanceManagementServices);
 
             var consumer = new AsyncEventingBasicConsumer(channel);
             consumer.Received += async (bc, ea) =>
@@ -78,7 +78,7 @@ namespace WorkshopManagementAPI.Services
                 }
             };
 
-            channel.BasicConsume(queue: "SAGA-GMS-WorkshopManagementAPI-topic-queue", autoAck: true, consumer: consumer);
+            channel.BasicConsume(queue: "SAGA-GMS-MaintenanceManagementAPI-topic-queue", autoAck: true, consumer: consumer);
 
             await Task.CompletedTask;
         }
@@ -136,7 +136,7 @@ namespace WorkshopManagementAPI.Services
                     GenerateDemoError = input.GenerateDemoError,
                 };
 
-                result = await _workshopPlanningService.RegisterAsync(planMaintenanceJob);
+                result = await _maintenancePlanningService.RegisterAsync(planMaintenanceJob);
                 _messagePublisher.PublishToTopicExchange(
                     correlationId,
                     TopicRouteKey.OrchestrationEngine,
@@ -160,7 +160,7 @@ namespace WorkshopManagementAPI.Services
             Log.Information($"UndoPlanMaintenanceJob JobId: {jobId} ");
             try
             {
-                result = await _workshopPlanningService.UndoPlanMaintenanceJobAsync(jobId);
+                result = await _maintenancePlanningService.UndoPlanMaintenanceJobAsync(jobId);
                 _messagePublisher
                     .PublishToTopicExchange(
                         correlationId,

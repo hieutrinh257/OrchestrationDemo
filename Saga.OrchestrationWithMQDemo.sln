@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VehicleManagementAPI", "Veh
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{65112D30-0948-4035-839B-7A35E3410A74}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WorkshopManagementAPI", "WorkshopManagementAPI\WorkshopManagementAPI.csproj", "{6596E3DD-D634-4959-B69B-6BF4A263E67C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MaintenanceManagementAPI", "MaintenanceManagementAPI\MaintenanceManagementAPI.csproj", "{6596E3DD-D634-4959-B69B-6BF4A263E67C}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NotificationManagementAPI", "NotificationManagementAPI\NotificationManagementAPI.csproj", "{6C57A496-F66B-4F8F-94CA-C78097F6F173}"
 EndProject

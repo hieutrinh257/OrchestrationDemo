@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace WorkshopManagementAPI.Common
+namespace MaintenanceManagementAPI.Common
 {
     public static class EnumUtil
     {

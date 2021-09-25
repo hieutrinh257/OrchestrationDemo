@@ -4,10 +4,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using WorkshopManagementAPI.Infrastructure.Messaging;
-using WorkshopManagementAPI.Services;
+using MaintenanceManagementAPI.Infrastructure.Messaging;
+using MaintenanceManagementAPI.Services;
 
-namespace WorkshopManagementAPI
+namespace MaintenanceManagementAPI
 {
     public class Startup
     {
@@ -24,7 +24,7 @@ namespace WorkshopManagementAPI
             services.AddControllers();
 
             services.AddTransient<IMessagePublisher, MessagePublisher>();
-            services.AddTransient<IWorkshopPlanningService, WorkshopPlanningService>();
+            services.AddTransient<IMaintenancePlanningService, MaintenancePlanningService>();
 
             services.AddHostedService<MessageHandlerBackgroundService>();
         }
@@ -32,7 +32,7 @@ namespace WorkshopManagementAPI
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
-            loggerFactory.AddFile("Logs/WorkshopManagementAPI-{Date}.txt");
+            loggerFactory.AddFile("Logs/MaintenanceManagementAPI-{Date}.txt");
 
             if (env.IsDevelopment())
             {

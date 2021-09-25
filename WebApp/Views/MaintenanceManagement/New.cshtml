@@ -1,5 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Mvc.ModelBinding
-@model WebApp.ViewModels.WorkShopManagementNewVM
+@model WebApp.ViewModels.MaintenanceManagementNewVM
 @{ ViewData["Title"] = "Register Customer"; }
 
 @section Scripts {
@@ -7,7 +7,7 @@
 }
 
 
-<form asp-controller="WorkshopManagement" asp-action="RegisterAndPlanMaintenanceJob" method="post">
+<form asp-controller="MaintenanceManagement" asp-action="RegisterAndPlanMaintenanceJob" method="post">
 
     <div align="center" class="alert-danger font-weight-bold ">
         @Html.ValidationMessage("Error")
@@ -63,7 +63,7 @@
 
     <hr />
 
-    <h6 title="WorkshopManagement Microservice">Maintenance Schedule Detail </h6>
+    <h6 title="MaintenanceManagement Microservice">Maintenance Schedule Detail </h6>
 
     <label asp-for="MaintenanceJob.StartTime"></label>
     <input asp-for="MaintenanceJob.StartTime" type="text" value="1/1/2020" />
@@ -83,7 +83,7 @@
         <b> Choose Microservice to Generate Error for Demo purpose</b><br />
         <span class="text-info font-italic">
             @Html.RadioButtonFor(model => model.MicroServiceName, "VehicleManagementMicroservice", false) VehicleManagement Microservice<br />
-            @Html.RadioButtonFor(model => model.MicroServiceName, "WorkshopManagementMicroservice", false) WorkshopManagement Microservice<br />
+            @Html.RadioButtonFor(model => model.MicroServiceName, "MaintenanceManagementMicroservice", false) MaintenanceManagement Microservice<br />
             @Html.RadioButtonFor(model => model.MicroServiceName, "None", true) None
         </span>
     </div>
@@ -94,7 +94,7 @@
         <button id="SubmitButton" type="submit" class="btn-primary">Schedule Maintenance</button>
     </span>
     <span>
-        <a id="CancelButton" asp-action="Index" class="btn-sm" asp-controller="WorkshopManagement">Cancel</a>
+        <a id="CancelButton" asp-action="Index" class="btn-sm" asp-controller="MaintenanceManagement">Cancel</a>
     </span>
 
 </form>

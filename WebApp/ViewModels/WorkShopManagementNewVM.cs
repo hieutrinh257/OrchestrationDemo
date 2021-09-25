@@ -6,7 +6,7 @@ using WebApp.Models;
 
 namespace WebApp.ViewModels
 {
-    public class WorkShopManagementNewVM
+    public class MaintenanceManagementNewVM
     {
         public HotelRegisterVM Hotel { get; set; }
         public CustomerRegisterVM Customer { get; set; }
@@ -23,7 +23,7 @@ namespace WebApp.ViewModels
 
                 if (value == "VehicleManagementMicroservice")
                     this.Vehicle.GenerateDemoError = true;
-                else if (value == "WorkshopManagementMicroservice")
+                else if (value == "MaintenanceManagementMicroservice")
                     this.MaintenanceJob.GenerateDemoError = true;
                 else
                 {

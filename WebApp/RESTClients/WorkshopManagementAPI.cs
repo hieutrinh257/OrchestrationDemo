@@ -6,19 +6,19 @@ using Microsoft.Extensions.Logging;
 
 namespace WebApp.RESTClients
 {
-    public class WorkshopManagementAPI : RESTClientsBase, IWorkshopManagementAPI
+    public class MaintenanceManagementAPI : RESTClientsBase, IMaintenanceManagementAPI
     {
-        private readonly ILogger<WorkshopManagementAPI> _logger;
+        private readonly ILogger<MaintenanceManagementAPI> _logger;
 
-        public WorkshopManagementAPI(IConfiguration config, ILogger<WorkshopManagementAPI> logger) 
-            : base(config, "WorkshopManagementAPI")
+        public MaintenanceManagementAPI(IConfiguration config, ILogger<MaintenanceManagementAPI> logger) 
+            : base(config, "MaintenanceManagementAPI")
         {
             _logger = logger;
         }
 
         public async Task<HttpResponseMessage> SendMaintenanceJobScheduleDetailEmail(string emailAddress)
         {
-            HttpResponseMessage httpResponse= await Get("WorkshopPlanning/SendMaintenanceJobScheduleDetailEmail/", emailAddress);
+            HttpResponseMessage httpResponse= await Get("MaintenancePlanning/SendMaintenanceJobScheduleDetailEmail/", emailAddress);
             _logger.LogInformation($"Maintenance Job Schedule Detail Email sent to {emailAddress}");
 
             return httpResponse;

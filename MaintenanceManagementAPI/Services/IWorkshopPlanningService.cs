@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WorkshopManagementAPI.Models;
+using MaintenanceManagementAPI.Models;
 
-namespace WorkshopManagementAPI.Services
+namespace MaintenanceManagementAPI.Services
 {
-    public interface IWorkshopPlanningService
+    public interface IMaintenancePlanningService
     {
         Task<bool> RegisterAsync([FromBody] PlanMaintenanceJob planMaintenanceJob);
         Task<bool> UndoPlanMaintenanceJobAsync(Guid jobId);

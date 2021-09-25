@@ -1,4 +1,4 @@
-﻿namespace WorkshopManagementAPI.Common
+﻿namespace MaintenanceManagementAPI.Common
 {
     public enum ServiceResponseMessageType
     {
